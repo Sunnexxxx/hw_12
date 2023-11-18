@@ -9,25 +9,9 @@
     <h1>Product List</h1>
     <a href="{% url 'product_create' %}">Create Product</a>
     <div style="width: 300px; margin: auto; margin-top: 50px;">
-    <form method="get" action="{% url 'product_list' %}">
-        <label for="category">Select Category:</label>
-        <select id="category" name="category">
-            <option value="" {% if not selected_category %}selected{% endif %}>All</option>
-            {% for category in category_list %}
-                <option value="{{ category.name }}" {% if category.name == selected_category %}selected{% endif %}>
-                    {{ category.name }}
-                </option>
-            {% endfor %}
-        </select>
-        <input type="submit" value="Filter">
-    </form>
-
         {% for product in product_list %}
-            <p>
-                {{ product.name }} -
+            <p>{{ product.name }} -
                 <a href="{% url 'product_detail' product.slug %}">Detail</a>
-                <a href="{% url 'product_update' product.slug %}">Update</a>
-                <a href="{% url 'product_delete' product.slug %}">Delete</a>
             </p>
         {% endfor %}
     </div>
