@@ -27,8 +27,6 @@ def product_create_view(request):
 
             except ValueError as e:
                 error_message = str(e)
-            except Category.DoesNotExist:
-                error_message = 'Выбранная категория не существует.'
 
     context['error_message'] = error_message
     return render(request, 'shop_side/product_create.html', context)
