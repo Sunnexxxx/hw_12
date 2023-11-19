@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Create</title>
+</head>
+<body>
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="name" required>
+        <input type="number" name="price" required>
+        <input type="number" name="quantity" required>
+        <select name="category" required>
+            {% for category in category_list %}
+                <option value="{{ category.pk }}">{{ category }}</option>
+            {% endfor %}
+        </select>
+
+        <input type="submit" value="Create">
+    </form>
+
+    {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+
+</body>
+</html>
